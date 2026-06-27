@@ -1,0 +1,424 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>✨ 梦幻女仆咖啡厅 · 治愈星球 ✨</title>
+  <!-- 优雅可爱字体 & 基础样式 -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@400;600;700&display=swap" rel="stylesheet" />
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      min-height: 100vh;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      background: linear-gradient(145deg, #fce9f0 0%, #ffe6f0 40%, #fde2ed 100%);
+      font-family: 'Quicksand', 'Segoe UI', 'PingFang SC', Roboto, sans-serif;
+      padding: 20px;
+      position: relative;
+      overflow-x: hidden;
+    }
+
+    /* 浮动小装饰 — 星星 & 心形 */
+    .floating-deco {
+      position: fixed;
+      font-size: 2rem;
+      opacity: 0.2;
+      pointer-events: none;
+      animation: floatUp 12s infinite alternate ease-in-out;
+      z-index: 0;
+    }
+
+    .floating-deco:nth-child(1) { top: 10%; left: 5%; animation-duration: 14s; font-size: 2.8rem; opacity: 0.15; }
+    .floating-deco:nth-child(2) { bottom: 12%; right: 6%; animation-duration: 16s; font-size: 3.2rem; opacity: 0.12; }
+    .floating-deco:nth-child(3) { top: 20%; right: 12%; animation-duration: 11s; font-size: 2rem; opacity: 0.2; }
+    .floating-deco:nth-child(4) { bottom: 25%; left: 8%; animation-duration: 18s; font-size: 2.6rem; opacity: 0.1; }
+    .floating-deco:nth-child(5) { top: 50%; left: 2%; animation-duration: 20s; font-size: 2.2rem; opacity: 0.15; }
+    .floating-deco:nth-child(6) { top: 60%; right: 3%; animation-duration: 13s; font-size: 2.9rem; opacity: 0.12; }
+
+    @keyframes floatUp {
+      0% { transform: translateY(0px) rotate(0deg) scale(1); }
+      100% { transform: translateY(-30px) rotate(6deg) scale(1.08); }
+    }
+
+    /* 主卡片 — 甜美女仆风 */
+    .maid-card {
+      position: relative;
+      max-width: 720px;
+      width: 100%;
+      background: rgba(255, 245, 248, 0.75);
+      backdrop-filter: blur(10px);
+      -webkit-backdrop-filter: blur(10px);
+      border-radius: 60px 60px 60px 60px;
+      box-shadow: 0 20px 60px rgba(235, 120, 150, 0.20),
+                  0 8px 24px rgba(255, 200, 210, 0.25),
+                  inset 0 1px 0 rgba(255, 255, 255, 0.7);
+      padding: 38px 32px 42px;
+      border: 1px solid rgba(255, 220, 230, 0.5);
+      transition: all 0.3s ease;
+      z-index: 10;
+      backdrop-filter: blur(8px);
+    }
+
+    /* 可爱蕾丝 / 花边装饰 (伪元素) */
+    .maid-card::before {
+      content: "🌸";
+      position: absolute;
+      top: -14px;
+      left: 30px;
+      font-size: 2.2rem;
+      opacity: 0.5;
+      filter: drop-shadow(0 4px 6px rgba(255, 120, 160, 0.2));
+    }
+    .maid-card::after {
+      content: "🌷";
+      position: absolute;
+      bottom: -10px;
+      right: 30px;
+      font-size: 2.6rem;
+      opacity: 0.4;
+      transform: rotate(10deg);
+    }
+
+    /* 标题区 — 女仆咖啡厅 */
+    .title-section {
+      text-align: center;
+      margin-bottom: 24px;
+      position: relative;
+    }
+
+    .title-section h1 {
+      font-size: 2.8rem;
+      font-weight: 700;
+      color: #7a3b4d;
+      letter-spacing: 2px;
+      text-shadow: 0 6px 18px rgba(235, 130, 170, 0.25);
+      display: inline-block;
+      background: linear-gradient(135deg, #fccfdf, #fbb6ce);
+      padding: 0 28px 6px 28px;
+      border-radius: 100px;
+      box-shadow: inset 0 -2px 0 rgba(255, 255, 255, 0.6);
+      line-height: 1.3;
+    }
+
+    .title-section .sub-catch {
+      font-size: 1.1rem;
+      font-weight: 600;
+      color: #a0526a;
+      background: rgba(255, 225, 235, 0.7);
+      display: inline-block;
+      padding: 6px 24px;
+      border-radius: 40px;
+      margin-top: 10px;
+      backdrop-filter: blur(4px);
+      border: 1px solid rgba(255, 200, 210, 0.5);
+      letter-spacing: 1px;
+    }
+
+    /* 核心slogan — 治愈温柔 */
+    .slogan-box {
+      background: linear-gradient(105deg, #ffeef3, #ffe2ec);
+      padding: 16px 22px;
+      border-radius: 60px 20px 60px 20px;
+      margin: 18px 0 22px 0;
+      text-align: center;
+      box-shadow: 0 6px 14px rgba(235, 140, 170, 0.12);
+      border-left: 4px solid #ffb3c6;
+      border-right: 4px solid #ffb3c6;
+    }
+
+    .slogan-box p {
+      font-size: 1.3rem;
+      font-weight: 600;
+      color: #582f3c;
+      letter-spacing: 0.5px;
+      line-height: 1.5;
+    }
+    .slogan-box span {
+      background: rgba(255, 255, 240, 0.5);
+      padding: 0 8px;
+      border-radius: 20px;
+      display: inline-block;
+    }
+
+    /* 特色服务列表 — 治愈系小标签 */
+    .feature-grid {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 12px 16px;
+      margin: 28px 0 30px 0;
+    }
+
+    .feature-tag {
+      background: rgba(255, 240, 245, 0.7);
+      backdrop-filter: blur(4px);
+      padding: 10px 18px;
+      border-radius: 50px;
+      font-weight: 600;
+      color: #4f2d38;
+      font-size: 1rem;
+      box-shadow: 0 4px 10px rgba(255, 150, 180, 0.12);
+      border: 1px solid rgba(255, 210, 220, 0.5);
+      transition: 0.2s;
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+    }
+
+    .feature-tag:hover {
+      transform: scale(1.02) translateY(-2px);
+      background: rgba(255, 225, 235, 0.8);
+      border-color: #f8b0c8;
+      box-shadow: 0 8px 18px rgba(235, 130, 165, 0.15);
+    }
+
+    .feature-tag::before {
+      content: "✦";
+      color: #d46887;
+      font-size: 1.2rem;
+    }
+
+    /* 联系 & 社群区块 */
+    .contact-area {
+      background: rgba(255, 235, 240, 0.5);
+      backdrop-filter: blur(4px);
+      border-radius: 48px;
+      padding: 22px 20px 20px;
+      margin: 24px 0 18px;
+      border: 1px solid rgba(255, 200, 215, 0.5);
+      box-shadow: inset 0 0 0 1px rgba(255, 255, 255, 0.6);
+    }
+
+    .contact-item {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      justify-content: center;
+      gap: 8px 16px;
+      font-size: 1.1rem;
+      font-weight: 600;
+      color: #4e2d39;
+      margin-bottom: 12px;
+    }
+
+    .contact-item:last-child {
+      margin-bottom: 0;
+    }
+
+    .contact-item .label {
+      background: #ffe2ec;
+      padding: 4px 16px 4px 14px;
+      border-radius: 40px;
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      font-size: 0.95rem;
+      border: 1px solid #ffc1d4;
+    }
+
+    .contact-item .value {
+      background: white;
+      padding: 6px 18px;
+      border-radius: 40px;
+      color: #3d1f29;
+      letter-spacing: 0.5px;
+      box-shadow: 0 2px 8px rgba(180, 80, 110, 0.08);
+      border: 1px solid #ffdae5;
+      font-weight: 700;
+      word-break: break-all;
+    }
+
+    .contact-item .value small {
+      font-weight: 400;
+      color: #a55b70;
+    }
+
+    .channel-badge {
+      background: #fad8e4;
+      padding: 6px 14px;
+      border-radius: 40px;
+      font-size: 0.95rem;
+      border: 1px solid #fbb8ce;
+    }
+
+    /* 邀请语 / 欢迎词 */
+    .welcome-message {
+      background: rgba(255, 215, 225, 0.25);
+      padding: 16px 18px;
+      border-radius: 40px 12px 40px 12px;
+      margin: 22px 0 10px;
+      text-align: center;
+      border: 1px dashed #f7b0c6;
+    }
+
+    .welcome-message p {
+      font-size: 1.05rem;
+      font-weight: 500;
+      color: #40232e;
+      line-height: 1.6;
+    }
+
+    .welcome-message .highlight {
+      background: #ffd9e6;
+      padding: 0 10px;
+      border-radius: 40px;
+      font-weight: 600;
+      color: #752f46;
+    }
+
+    /* 小女仆印章 */
+    .maid-seal {
+      text-align: right;
+      margin-top: 16px;
+      font-size: 1.2rem;
+      opacity: 0.7;
+      letter-spacing: 2px;
+    }
+    .maid-seal span {
+      background: rgba(255, 220, 230, 0.5);
+      padding: 6px 16px 6px 12px;
+      border-radius: 60px;
+      display: inline-block;
+      backdrop-filter: blur(2px);
+      border: 1px solid rgba(255, 200, 210, 0.3);
+    }
+
+    /* 响应式调整 */
+    @media (max-width: 500px) {
+      .maid-card {
+        padding: 28px 16px 32px;
+        border-radius: 40px;
+      }
+      .title-section h1 {
+        font-size: 2.2rem;
+        padding: 0 16px 4px;
+      }
+      .slogan-box p {
+        font-size: 1.05rem;
+      }
+      .contact-item {
+        flex-direction: column;
+        align-items: stretch;
+        gap: 6px;
+      }
+      .contact-item .value {
+        text-align: center;
+      }
+      .feature-tag {
+        font-size: 0.9rem;
+        padding: 6px 14px;
+      }
+    }
+
+    /* 额外小点缀 */
+    .dot-decoration {
+      display: flex;
+      justify-content: center;
+      gap: 12px;
+      margin-top: 12px;
+      opacity: 0.5;
+    }
+    .dot-decoration span {
+      width: 10px;
+      height: 10px;
+      background: #f9b0c6;
+      border-radius: 50%;
+      display: inline-block;
+      box-shadow: 0 0 0 2px rgba(255, 200, 215, 0.3);
+    }
+    .dot-decoration span:nth-child(2) { background: #f5a0ba; width: 12px; height: 12px; }
+    .dot-decoration span:nth-child(3) { background: #fcc4d4; }
+  </style>
+</head>
+<body>
+
+  <!-- 浮动装饰 (星星、花朵、心) -->
+  <div class="floating-deco">🌸</div>
+  <div class="floating-deco">✨</div>
+  <div class="floating-deco">🍰</div>
+  <div class="floating-deco">🧁</div>
+  <div class="floating-deco">💕</div>
+  <div class="floating-deco">🫖</div>
+
+  <!-- 主卡片 -->
+  <div class="maid-card">
+
+    <!-- 标题 -->
+    <div class="title-section">
+      <h1>☕ 女仆咖啡厅</h1>
+      <div class="sub-catch">✦ 治愈 · 陪伴 · 放松 ✦</div>
+    </div>
+
+    <!-- 核心slogan -->
+    <div class="slogan-box">
+      <p>
+        <span>用温柔治愈所有疲惫</span><br />
+        <span>用可爱融化所有烦恼</span>
+      </p>
+    </div>
+
+    <!-- 特色服务标签 -->
+    <div class="feature-grid">
+      <span class="feature-tag">轻松聊天</span>
+      <span class="feature-tag">陪伴解闷</span>
+      <span class="feature-tag">趣味小游戏</span>
+      <span class="feature-tag">治愈陪伴</span>
+      <span class="feature-tag">专属应援</span>
+      <span class="feature-tag">温柔鼓励</span>
+      <span class="feature-tag">仪式感服务</span>
+    </div>
+
+    <!-- 联系 & 社群 -->
+    <div class="contact-area">
+      <div class="contact-item">
+        <span class="label">💬 聊天群</span>
+        <span class="value">QQ 212510688</span>
+      </div>
+      <div class="contact-item">
+        <span class="label">📡 QQ频道</span>
+        <span class="value">腾讯频道：pd40469129</span>
+      </div>
+      <div class="contact-item" style="justify-content: center; gap: 10px; margin-top: 6px;">
+        <span class="channel-badge">👧 女生</span>
+        <span class="channel-badge">👦 男生</span>
+        <span class="channel-badge" style="background: #fcc9db;">🌸 小南娘</span>
+        <span style="font-weight: 600; color: #6f3d4b;">随时来体验</span>
+      </div>
+    </div>
+
+    <!-- 欢迎词 · 治愈核心 -->
+    <div class="welcome-message">
+      <p>
+        ✨ 每一次互动都 <span class="highlight">轻松、纯粹、治愈</span> ✨<br />
+        没有压力 · 没有套路 · 只给你满满的温柔与好心情
+      </p>
+    </div>
+
+    <!-- 小点缀 & 女仆印章 -->
+    <div class="dot-decoration">
+      <span></span>
+      <span></span>
+      <span></span>
+    </div>
+
+    <div class="maid-seal">
+      <span>🤍 主人，欢迎回来 🤍</span>
+    </div>
+
+    <!-- 最下方小字（仪式感） -->
+    <div style="text-align: center; margin-top: 20px; font-size: 0.85rem; color: #a55b70; opacity: 0.8; letter-spacing: 0.3px; border-top: 1px solid rgba(255, 200, 215, 0.3); padding-top: 16px;">
+      <span>🫖 女仆咖啡厅 · 角色扮演 · 治愈星球</span>
+    </div>
+  </div>
+
+</body>
+</html>
